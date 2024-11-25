@@ -35,12 +35,12 @@ export class LoginComponent implements OnInit {
     this.formSubmitted = true;
     const { cedula, contrasena } = this.loginForm.value;
 
-    if (cedula === '1083812082' && contrasena === '123') {
-      this.router.navigate(['/admin-interfaz']);
-    } else {
+    
+      this.router.navigate(['/agregar-medico']);
+   
       this.loginError = true;
     }
-  }
+  
 
   hasErrors(controlName: string, errorName: string): boolean {
     return this.loginForm.controls[controlName].hasError(errorName);

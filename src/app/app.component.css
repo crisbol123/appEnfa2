@@ -4,8 +4,7 @@ header {
     align-items: center;
     background: #6C63FF;
     box-sizing: border-box;
-    border-bottom: 2px solid rgb(12, 4, 255);
-    padding: 0;
+    padding: 5px;
 }
 .header-left {
     margin-right: 20px; 
@@ -27,4 +26,5 @@ header {
     text-transform: uppercase;
     font-weight: 500;
     letter-spacing: 1.5px;
+    font-weight: bold;
 }

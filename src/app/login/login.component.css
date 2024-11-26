@@ -6,6 +6,8 @@
 
 mat-card {
   padding: 20px;
+  border-radius: 20px;
+  box-shadow: 0 0px 10px 0 rgba(0, 0, 0, 0.5);
 }
 
 mat-card-title {
@@ -23,17 +25,6 @@ mat-card-content {
 
 mat-form-field {
   width: 100%;
-}
-
-mat-card-actions {
-  display: flex;
-  justify-content: center;
-}
-
-button {
-  width: 100%;
-  color: #6C63FF;
-  border-radius: 20px;
 }
 
 .error-message {

@@ -4,3 +4,22 @@ body {
     margin: 0;
     font-family: 'Roboto', sans-serif;
 }
+
+/* Estilo común para botones */
+button {
+    width: 100%;
+    color: white; /* Texto blanco para ambos botones */
+    background-color: #6C63FF; /* Fondo principal */
+    border-radius: 20px; /* Bordes redondeados */
+    border: none; /* Sin borde adicional */
+    height: 48px; /* Altura consistente */
+    font-size: large; /* Tamaño de fuente uniforme */
+    font-weight: bold; /* Texto en negrita */
+    cursor: pointer; /* Cambia el cursor a una mano */      
+  }
+  
+  /* Hover para ambos botones */
+  button:hover {
+    background-color: #5148cc; /* Color más oscuro al pasar el cursor */
+  }
+  

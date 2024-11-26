@@ -8,7 +8,7 @@ import { PerfilComponent } from './perfil/perfil.component';
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, LoginComponent, MainMenuComponent, AgregarMedicoComponent, PerfilComponent],
+  imports: [RouterOutlet, /*LoginComponent, MainMenuComponent, AgregarMedicoComponent, PerfilComponent*/],
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })

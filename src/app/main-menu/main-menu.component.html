@@ -1,0 +1,30 @@
+<div class="main-menu-container">
+  <mat-card class="menu-card">
+    <!-- Título de bienvenida -->
+    <mat-card-title class="welcome-message">Bienvenido</mat-card-title>
+
+    <!-- Botones -->
+    <mat-card-content>
+      <div class="button-row">
+        <button mat-raised-button color="primary" class="menu-button" (click)="navigateTo('agregar-medico')">
+          Añadir Médico
+        </button>
+      </div>
+      <div class="button-row">
+        <button mat-raised-button color="accent" class="menu-button" (click)="navigateTo('administrar-medico')">
+          Administrar Médicos
+        </button>
+      </div>
+      <div class="button-row">
+        <button mat-raised-button color="warn" class="menu-button" (click)="navigateTo('perfil')">
+          Perfil
+        </button>
+      </div>
+      <div class="button-row">
+        <button mat-raised-button color="primary" class="menu-button logout-button" (click)="logout()">
+          Cerrar Sesión
+        </button>
+      </div>
+    </mat-card-content>
+  </mat-card>
+</div>

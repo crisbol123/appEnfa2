@@ -8,7 +8,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
 import { MatIconModule } from '@angular/material/icon';
-import { MatCardModule } from '@angular/material/card'; // Importación necesaria
+import { MatCardModule } from '@angular/material/card';
 
 @Component({
   selector: 'app-agregar-medico',
@@ -44,7 +44,7 @@ export class AgregarMedicoComponent implements OnInit {
   onSubmit(): void {
     if (this.medicoForm.valid) {
       console.log('Formulario válido:', this.medicoForm.value);
-      this.router.navigate(['']); // Redirige a la ruta deseada
+      this.router.navigate(['']);
     } else {
       console.log('Formulario inválido');
     }

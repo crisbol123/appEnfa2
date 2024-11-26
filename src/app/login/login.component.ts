@@ -13,7 +13,7 @@ import { ReactiveFormsModule } from '@angular/forms';
   imports: [
     ReactiveFormsModule,
     CommonModule,
-    RouterOutlet,
+    //RouterOutlet,
     MatInputModule,
     MatFormFieldModule,
     MatCardModule,
@@ -40,7 +40,7 @@ export class LoginComponent implements OnInit {
     this.formSubmitted = true;
     const { cedula, contrasena } = this.loginForm.value;
 
-    this.router.navigate(['/agregar-medico']);
+    this.router.navigate(['/main-menu']);
 
     this.loginError = true;
   }

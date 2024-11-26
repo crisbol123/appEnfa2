@@ -21,7 +21,7 @@ import { MatCardModule } from '@angular/material/card';
     MatNativeDateModule,
     MatIconModule,
     MatSelectModule,
-    MatCardModule, // Agregar aquí el módulo necesario para usar mat-card
+    MatCardModule,
   ],
   templateUrl: './agregar-medico.component.html',
   styleUrls: ['./agregar-medico.component.css'],

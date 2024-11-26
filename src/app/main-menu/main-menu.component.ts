@@ -15,7 +15,6 @@ export class MainMenuComponent {
 
   constructor(private router: Router) {}
 
-  // Navegar a las diferentes páginas
   navigateTo(page: string): void {
     switch (page) {
       case 'agregar-medico':

@@ -1,8 +1,36 @@
-<mat-form-field>
-    <mat-label>Choose a date</mat-label>
-    <input matInput [matDatepicker]="picker">
-    <mat-hint>MM/DD/YYYY</mat-hint>
-    <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
-    <mat-datepicker #picker></mat-datepicker>
-  </mat-form-field>
-  <h1>{{nombre}}</h1>
+<form [formGroup]="medicoForm" (ngSubmit)="onSubmit()" class="medico-form">
+  <mat-card>
+    <mat-card-title>Agregar Médico</mat-card-title>
+    <mat-card-content>
+      <mat-form-field appearance="outline" class="full-width">
+        <mat-label>Nombre</mat-label>
+        <input matInput formControlName="nombre" type="text" />
+        <mat-icon matSuffix>person</mat-icon>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline" class="full-width">
+        <mat-label>Correo</mat-label>
+        <input matInput formControlName="correo" type="email" />
+        <mat-icon matSuffix>mail</mat-icon>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline" class="full-width">
+        <mat-label>Identificación</mat-label>
+        <input matInput formControlName="identificacion" type="text" />
+        <mat-icon class="material-symbols-rounded" matSuffix>id_card</mat-icon>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline" class="full-width">
+        <mat-label>Especialidad</mat-label>
+        <mat-select formControlName="especialidad">
+          <mat-option value="medicinaGeneral">Medicina General</mat-option>
+          <mat-option value="cardiologia">Cardiología</mat-option>
+          <mat-option value="pediatria">Pediatría</mat-option>
+        </mat-select>
+      </mat-form-field>
+    </mat-card-content>
+    <mat-card-actions>
+      <button mat-raised-button color="primary" type="submit">Añadir</button>
+    </mat-card-actions>
+  </mat-card>
+</form>

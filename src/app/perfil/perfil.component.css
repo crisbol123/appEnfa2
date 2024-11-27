@@ -1,4 +1,4 @@
-.medico-form {
+.profile-container {
   max-width: 400px;
   margin: 50px auto;
   display: flex;
@@ -25,17 +25,25 @@ mat-form-field {
   margin-bottom: 16px;
 }
 
-mat-form-field .mat-icon {
+.large-icon {
+  font-size: 80px;
   color: #6c63ff;
 }
 
-.mat-select {
-  background-color: #f9f9f9;
-  border-radius: 4px;
+.editable-icon {
+  cursor: pointer;
+  color: #6c63ff;
+  transition: color 0.3s;
 }
 
-.mat-error {
-  color: red;
-  font-size: 12px;
-  margin-top: -12px;
+.editable-icon:hover {
+  color: #5148cc;
+}
+
+.save-button {
+  width: 100%;
+  color: white;
+  background-color: #6c63ff;
+  font-weight: bold;
+  height: 50px;
 }

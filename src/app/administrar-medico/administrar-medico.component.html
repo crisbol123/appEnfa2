@@ -1,0 +1,36 @@
+<div class="admin-container">
+  <h1 class="admin-title">ADMINISTRAR</h1>
+
+  <div class="specialties-grid">
+    <div class="specialty-card" *ngFor="let specialty of specialties">
+      <img [src]="specialty.icon" alt="{{ specialty.name }}" class="specialty-icon" />
+      <p class="specialty-name">{{ specialty.name }}</p>
+    </div>
+  </div>
+
+  <mat-form-field appearance="outline" class="full-width">
+    <mat-label>Seleccione médico</mat-label>
+    <mat-select [(ngModel)]="selectedDoctor">
+      <mat-option *ngFor="let doctor of doctors" [value]="doctor">
+        {{ doctor }}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <button mat-raised-button color="primary" class="add-date-button">
+    Agregar fecha +
+  </button>
+
+  <mat-form-field appearance="outline" class="full-width">
+    <mat-label>Modificar fecha</mat-label>
+    <mat-select [(ngModel)]="selectedDate">
+      <mat-option *ngFor="let date of availableDates" [value]="date">
+        {{ date }}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <button mat-raised-button color="primary" class="save-button">
+    Guardar
+  </button>
+</div>

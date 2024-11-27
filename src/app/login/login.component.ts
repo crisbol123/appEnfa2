@@ -19,7 +19,7 @@ import { ReactiveFormsModule } from '@angular/forms';
     MatCardModule,
   ],
   templateUrl: './login.component.html',
-  styleUrls: ['./login.component.css'], // Cambiado de styleUrl a styleUrls
+  styleUrls: ['./login.component.css'],
 })
 export class LoginComponent implements OnInit {
   loginForm!: FormGroup;
@@ -27,7 +27,7 @@ export class LoginComponent implements OnInit {
   errorLogin: string = 'k';
   formSubmitted: boolean = false;
 
-  constructor(private fb: FormBuilder, private router: Router) {}
+  constructor(private fb: FormBuilder, private router: Router) { }
 
   ngOnInit(): void {
     this.loginForm = this.fb.group({

@@ -29,10 +29,9 @@ import { MatCardModule } from '@angular/material/card';
 export class AgregarMedicoComponent implements OnInit {
   medicoForm!: FormGroup;
 
-  constructor(private fb: FormBuilder, private router: Router) {}
+  constructor(private fb: FormBuilder, private router: Router) { }
 
   ngOnInit(): void {
-    // Configuración del formulario reactivo
     this.medicoForm = this.fb.group({
       nombre: ['', Validators.required],
       correo: ['', [Validators.required, Validators.email]],

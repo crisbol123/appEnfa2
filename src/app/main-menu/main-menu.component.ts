@@ -13,7 +13,7 @@ import { MatCardModule } from '@angular/material/card';
 })
 export class MainMenuComponent {
 
-  constructor(private router: Router) {}
+  constructor(private router: Router) { }
 
   navigateTo(page: string): void {
     switch (page) {
@@ -33,7 +33,6 @@ export class MainMenuComponent {
 
   logout(): void {
     console.log('Cerrando sesión...');
-    // Aquí puedes agregar lógica adicional para limpiar el estado de autenticación
     this.router.navigate(['/login']);
   }
 }

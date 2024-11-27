@@ -37,12 +37,10 @@ export class PerfilComponent {
     password: false,
   };
 
-  // Habilita la edición de un campo específico
   enableEdit(field: EditableField): void {
     this.editState[field] = true;
   }
 
-  // Guarda los cambios realizados
   saveProfile(): void {
     console.log('Perfil guardado:', this.profile);
     this.editState = {

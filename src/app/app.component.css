@@ -11,7 +11,6 @@ header {
     margin-right: 20px;
 }
 
-
 .header-left img {
     height: 100px;
     width: 100px;
@@ -28,4 +27,24 @@ header {
     font-weight: 500;
     letter-spacing: 1.5px;
     font-weight: bold;
+}
+
+.logo {
+    height: 50px;
+    margin-right: 16px;
+}
+
+.back-icon {
+    position: absolute;
+    width: 50px;
+    height: 50px;
+    left: 20%;
+    font-size: 50px;
+    cursor: pointer;
+    color: white;
+    transition: color 0.3s;
+}
+
+.back-icon:hover {
+    color: #ececec;
 }

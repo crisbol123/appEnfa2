@@ -5,6 +5,14 @@
   <div class="header-right">
     <h4>Sistema Administrativo de Appoint ME</h4>
   </div>
+
+  <mat-icon
+    *ngIf="!isLoginPage && !isMainMenuPage"
+    class="back-icon"
+    (click)="goToMainMenu()"
+  >
+    arrow_circle_left
+  </mat-icon>
 </header>
 
 <router-outlet />

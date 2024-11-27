@@ -33,6 +33,6 @@ export class MainMenuComponent {
 
   logout(): void {
     console.log('Cerrando sesión...');
-    this.router.navigate(['/login']);
+    this.router.navigate(['']);
   }
 }

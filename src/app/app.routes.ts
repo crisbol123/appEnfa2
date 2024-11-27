@@ -5,7 +5,8 @@ import { AgregarMedicoComponent } from "./agregar-medico/agregar-medico.componen
 import { PerfilComponent } from './perfil/perfil.component';
 import { AdministrarMedicoComponent } from './administrar-medico/administrar-medico.component';
 
-export const routes: Routes = [{ path: '', component: LoginComponent },
+export const routes: Routes = [
+{ path: '', component: LoginComponent },
 { path: 'login', component: LoginComponent },
 { path: 'main-menu', component: MainMenuComponent },
 { path: 'agregar-medico', component: AgregarMedicoComponent },

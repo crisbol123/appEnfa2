@@ -2,35 +2,51 @@
   <mat-card>
     <mat-card-title>Agregar Médico</mat-card-title>
     <mat-card-content>
+      <!-- Campo: Nombre -->
       <mat-form-field appearance="outline" class="full-width">
         <mat-label>Nombre</mat-label>
         <input matInput formControlName="nombre" type="text" />
         <mat-icon matSuffix>person</mat-icon>
       </mat-form-field>
 
+      <!-- Campo: Correo -->
       <mat-form-field appearance="outline" class="full-width">
         <mat-label>Correo</mat-label>
         <input matInput formControlName="correo" type="email" />
         <mat-icon matSuffix>mail</mat-icon>
       </mat-form-field>
 
+      <!-- Campo: Identificación -->
       <mat-form-field appearance="outline" class="full-width">
         <mat-label>Identificación</mat-label>
         <input matInput formControlName="identificacion" type="text" />
         <mat-icon class="material-symbols-rounded" matSuffix>id_card</mat-icon>
       </mat-form-field>
 
+      <!-- Campo: Especialidad -->
       <mat-form-field appearance="outline" class="full-width">
         <mat-label>Especialidad</mat-label>
         <mat-select formControlName="especialidad">
           <mat-option value="medicinaGeneral">Medicina General</mat-option>
+          <mat-option value="neurologia">Neurología</mat-option>
           <mat-option value="cardiologia">Cardiología</mat-option>
+          <mat-option value="dermatologia">Dermatología</mat-option>
+          <mat-option value="odontologia">Odontología</mat-option>
+          <mat-option value="ginecologia">Ginecología</mat-option>
           <mat-option value="pediatria">Pediatría</mat-option>
+          <mat-option value="cirugia">Cirugía</mat-option>
+          <mat-option value="urologia">Urología</mat-option>
         </mat-select>
       </mat-form-field>
     </mat-card-content>
     <mat-card-actions>
-      <button mat-raised-button color="primary" type="submit">Añadir</button>
+      <button mat-raised-button color="primary" type="submit" [disabled]="isSubmitting">
+        Añadir
+        <mat-progress-spinner *ngIf="isSubmitting" diameter="20" mode="indeterminate"></mat-progress-spinner>
+      </button>
     </mat-card-actions>
   </mat-card>
+  <div *ngIf="submissionError" class="error-message">
+    No se pudo enviar el formulario. Inténtalo de nuevo.
+  </div>
 </form>

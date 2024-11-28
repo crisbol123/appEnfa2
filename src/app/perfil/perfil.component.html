@@ -3,35 +3,51 @@
     <mat-card-title class="profile-title">PERFIL</mat-card-title>
 
     <mat-card-content>
+      <!-- Campo: Nombre -->
       <mat-form-field appearance="outline" class="full-width">
         <mat-label>Nombre</mat-label>
         <input matInput [(ngModel)]="profile.name" [readonly]="!editState.name" />
-        <mat-icon matSuffix class="editable-icon" (click)="enableEdit('name')">edit</mat-icon>
+        <mat-icon matSuffix class="editable-icon" (click)="enableEdit('name')">
+          edit
+        </mat-icon>
       </mat-form-field>
 
+      <!-- Campo: Correo -->
       <mat-form-field appearance="outline" class="full-width">
         <mat-label>Correo</mat-label>
         <input matInput [(ngModel)]="profile.email" [readonly]="!editState.email" type="email" />
-        <mat-icon matSuffix class="editable-icon" (click)="enableEdit('email')">edit</mat-icon>
+        <mat-icon matSuffix class="editable-icon" (click)="enableEdit('email')">
+          edit
+        </mat-icon>
       </mat-form-field>
 
+      <!-- Campo: Identificación -->
       <mat-form-field appearance="outline" class="full-width">
         <mat-label>Identificación</mat-label>
         <input matInput [(ngModel)]="profile.identification" [readonly]="!editState.identification" type="tel" />
-        <mat-icon matSuffix class="editable-icon" (click)="enableEdit('identification')">edit</mat-icon>
+        <mat-icon matSuffix class="editable-icon" (click)="enableEdit('identification')">
+          edit
+        </mat-icon>
       </mat-form-field>
 
+      <!-- Campo: Contraseña -->
       <mat-form-field appearance="outline" class="full-width">
         <mat-label>Contraseña</mat-label>
         <input matInput [(ngModel)]="profile.password" [readonly]="!editState.password" type="password" />
-        <mat-icon matSuffix class="editable-icon" (click)="enableEdit('password')">edit</mat-icon>
+        <mat-icon matSuffix class="editable-icon" (click)="enableEdit('password')">
+          edit
+        </mat-icon>
       </mat-form-field>
     </mat-card-content>
 
     <mat-card-actions>
-      <button mat-raised-button color="primary" class="save-button" (click)="saveProfile()">
+      <button mat-raised-button color="primary" class="save-button" (click)="saveProfile()" [disabled]="isSubmitting">
         Guardar
+        <mat-progress-spinner *ngIf="isSubmitting" diameter="20" mode="indeterminate"></mat-progress-spinner>
       </button>
     </mat-card-actions>
   </mat-card>
+  <div *ngIf="submissionError" class="error-message">
+    Error al guardar los cambios. Inténtalo de nuevo.
+  </div>
 </div>

@@ -9,6 +9,8 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
 import { MatIconModule } from '@angular/material/icon';
 import { MatCardModule } from '@angular/material/card';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-agregar-medico',
@@ -22,16 +24,21 @@ import { MatCardModule } from '@angular/material/card';
     MatIconModule,
     MatSelectModule,
     MatCardModule,
+    MatProgressSpinnerModule,
+    CommonModule,
   ],
   templateUrl: './agregar-medico.component.html',
   styleUrls: ['./agregar-medico.component.css'],
 })
 export class AgregarMedicoComponent implements OnInit {
-  medicoForm!: FormGroup;
+  medicoForm!: FormGroup; // Formulario reactivo
+  isSubmitting: boolean = false; // Indicador de envío en curso
+  submissionError: boolean = false; // Indicador de error en el envío
 
-  constructor(private fb: FormBuilder, private router: Router) { }
+  constructor(private fb: FormBuilder, private router: Router) {}
 
   ngOnInit(): void {
+    // Inicialización del formulario con validaciones
     this.medicoForm = this.fb.group({
       nombre: ['', Validators.required],
       correo: ['', [Validators.required, Validators.email]],
@@ -40,12 +47,31 @@ export class AgregarMedicoComponent implements OnInit {
     });
   }
 
+  // Método para manejar el envío del formulario
   onSubmit(): void {
     if (this.medicoForm.valid) {
-      console.log('Formulario válido:', this.medicoForm.value);
-      this.router.navigate(['']);
+      this.isSubmitting = true; // Inicia el estado de carga
+      this.submissionError = false; // Resetea cualquier error previo
+
+      // Objeto JSON para simular el envío
+      const medicoData = {
+        nombre: this.medicoForm.value.nombre,
+        correo: this.medicoForm.value.correo,
+        identificacion: this.medicoForm.value.identificacion,
+        especialidad: this.medicoForm.value.especialidad,
+      };
+
+      console.log('Datos a enviar:', JSON.stringify(medicoData));
+
+      // Simulación del envío al backend
+      setTimeout(() => {
+        console.log('Datos enviados correctamente.');
+        this.isSubmitting = false; // Finaliza el estado de carga
+        this.router.navigate(['']); // Navega a la página principal
+      }, 2000);
     } else {
       console.log('Formulario inválido');
+      this.submissionError = true; // Muestra un error si el formulario es inválido
     }
   }
 }

@@ -2,11 +2,15 @@ import { Component } from '@angular/core';
 import { Router, RouterModule, RouterOutlet, NavigationEnd } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { MatIconModule } from '@angular/material/icon';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatNativeDateModule } from '@angular/material/core';
+import { MatInputModule } from '@angular/material/input';
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterModule,RouterOutlet,CommonModule,MatIconModule],
+  imports: [RouterModule,RouterOutlet,CommonModule,MatIconModule,MatDatepickerModule,MatNativeDateModule,MatInputModule,FormsModule,],
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })

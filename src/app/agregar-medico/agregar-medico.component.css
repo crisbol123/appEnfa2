@@ -29,6 +29,11 @@ mat-form-field .mat-icon {
   color: #6c63ff;
 }
 
+mat-progress-spinner {
+  margin: 0 auto;
+  color: white;
+}
+
 .mat-select {
   background-color: #f9f9f9;
   border-radius: 4px;

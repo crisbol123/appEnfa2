@@ -47,3 +47,8 @@ mat-form-field {
   font-weight: bold;
   height: 50px;
 }
+
+mat-progress-spinner {
+  margin: 0 auto;
+  color: white;
+}

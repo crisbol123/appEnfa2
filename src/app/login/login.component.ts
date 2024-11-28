@@ -1,6 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
-import { Router, RouterOutlet } from '@angular/router';
+import { Router } from '@angular/router';
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatCardModule } from '@angular/material/card';
@@ -13,7 +13,6 @@ import { ReactiveFormsModule } from '@angular/forms';
   imports: [
     ReactiveFormsModule,
     CommonModule,
-    //RouterOutlet,
     MatInputModule,
     MatFormFieldModule,
     MatCardModule,
@@ -24,7 +23,6 @@ import { ReactiveFormsModule } from '@angular/forms';
 export class LoginComponent implements OnInit {
   loginForm!: FormGroup;
   loginError: boolean = false;
-  errorLogin: string = 'k';
   formSubmitted: boolean = false;
 
   constructor(private fb: FormBuilder, private router: Router) { }

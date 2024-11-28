@@ -6,7 +6,7 @@ import { MatInputModule } from '@angular/material/input';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 
-type EditableField = 'name' | 'email' | 'phone' | 'password';
+type EditableField = 'name' | 'email' | 'identification' | 'password';
 
 @Component({
   selector: 'app-profile',
@@ -26,14 +26,14 @@ export class PerfilComponent {
   profile = {
     name: '',
     email: '',
-    phone: '',
+    identification: '',
     password: '',
   };
 
   editState: Record<EditableField, boolean> = {
     name: false,
     email: false,
-    phone: false,
+    identification: false,
     password: false,
   };
 
@@ -46,7 +46,7 @@ export class PerfilComponent {
     this.editState = {
       name: false,
       email: false,
-      phone: false,
+      identification: false,
       password: false,
     };
   }

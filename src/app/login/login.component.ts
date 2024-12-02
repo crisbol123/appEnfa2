@@ -35,12 +35,7 @@ export class LoginComponent implements OnInit {
   }
 
   onSubmit(): void {
-    this.formSubmitted = true;
-    const { cedula, contrasena } = this.loginForm.value;
 
-    this.router.navigate(['/main-menu']);
-
-    this.loginError = true;
   }
 
   hasErrors(controlName: string, errorName: string): boolean {

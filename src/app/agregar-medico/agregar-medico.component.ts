@@ -11,6 +11,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatCardModule } from '@angular/material/card';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { CommonModule } from '@angular/common';
+import { MedicoService } from '../medico.service';
 
 @Component({
   selector: 'app-agregar-medico',
@@ -35,7 +36,7 @@ export class AgregarMedicoComponent implements OnInit {
   isSubmitting: boolean = false; // Indicador de envío en curso
   submissionError: boolean = false; // Indicador de error en el envío
 
-  constructor(private fb: FormBuilder, private router: Router) {}
+  constructor(private fb: FormBuilder, private router: Router,private medicoService: MedicoService) {}
 
   ngOnInit(): void {
     // Inicialización del formulario con validaciones
@@ -60,18 +61,20 @@ export class AgregarMedicoComponent implements OnInit {
         identificacion: this.medicoForm.value.identificacion,
         especialidad: this.medicoForm.value.especialidad,
       };
+     this.medicoService.createMedico(medicoData).subscribe( 
+      
+   
+      (response) => {
+        this.isSubmitting = false; 
+      },
+   
+      (error) => {
+        this.isSubmitting = false; 
+        this.submissionError = true; 
+      }
 
-      console.log('Datos a enviar:', JSON.stringify(medicoData));
 
-      // Simulación del envío al backend
-      setTimeout(() => {
-        console.log('Datos enviados correctamente.');
-        this.isSubmitting = false; // Finaliza el estado de carga
-        this.router.navigate(['']); // Navega a la página principal
-      }, 2000);
-    } else {
-      console.log('Formulario inválido');
-      this.submissionError = true; // Muestra un error si el formulario es inválido
-    }
+      );
   }
+} 
 }

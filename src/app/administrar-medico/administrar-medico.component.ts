@@ -37,18 +37,16 @@ export class AdministrarMedicoComponent {
     { name: 'Urología', icon: 'assets/icons/urologia.svg', id: 9 },
   ];
 
-  doctors: string[] = []; // Lista dinámica de médicos
-  availableDates: { date: string; time: string }[] = []; // Fechas y horas dinámicas
-  selectedDoctor: string | null = null; // Médico seleccionado
-  selectedDate: { date: string; time: string } | null = null; // Fecha seleccionada
+  doctors: string[] = [];
+  availableDates: { date: string; time: string }[] = [];
+  selectedDoctor: string | null = null;
+  selectedDate: { date: string; time: string } | null = null;
 
-  // Carga de médicos según especialidad
   loadDoctors(specialtyId: number): void {
     console.log(`Cargando médicos para la especialidad con ID: ${specialtyId}`);
     this.doctors = [`Dr. Juan Pérez (${specialtyId})`, `Dra. Ana López (${specialtyId})`];
   }
 
-  // Agregar una fecha y hora
   addDate(event: any, time: string): void {
     const newDate: Date | null = (event as MatDatepickerInputEvent<Date>).value;
     if (newDate) {
@@ -58,16 +56,25 @@ export class AdministrarMedicoComponent {
     }
   }
 
-  // Modificar una fecha existente
-  modifyDate(event: any, time: string): void {
-    const newDate: Date | null = (event as MatDatepickerInputEvent<Date>).value;
-    if (newDate && this.selectedDate) {
-      const formattedDate = newDate.toISOString().split('T')[0]; // Solo fecha
-      const index = this.selectedDate ? this.availableDates.findIndex((d) => d.date === this.selectedDate?.date) : -1;
-      if (index !== -1) {
-        this.availableDates[index] = { date: formattedDate, time };
-        console.log(`Fecha y hora modificadas a: ${formattedDate} ${time}`);
-      }
+  deleteDoctor(): void {
+    if (this.selectedDoctor) {
+      console.log(`Eliminando médico: ${this.selectedDoctor}`);
+      this.doctors = this.doctors.filter((doctor) => doctor !== this.selectedDoctor);
+      this.selectedDoctor = null;
+    } else {
+      console.warn('No se ha seleccionado ningún médico');
+    }
+  }
+
+  deleteDate(): void {
+    if (this.selectedDate) {
+      console.log(`Eliminando fecha: ${this.selectedDate.date} ${this.selectedDate.time}`);
+      this.availableDates = this.availableDates.filter(
+        (date) => this.selectedDate && (date.date !== this.selectedDate.date || date.time !== this.selectedDate.time)
+      );
+      this.selectedDate = null;
+    } else {
+      console.warn('No se ha seleccionado ninguna fecha');
     }
   }
 }

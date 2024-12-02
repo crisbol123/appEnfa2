@@ -1,6 +1,7 @@
 <div class="admin-container">
   <h1 class="admin-title">ADMINISTRAR</h1>
 
+  <!-- Botones de especialidades -->
   <div class="specialties-grid">
     <div class="specialty-card" *ngFor="let specialty of specialties" (click)="loadDoctors(specialty.id)">
       <img [src]="specialty.icon" alt="{{ specialty.name }}" class="specialty-icon" />
@@ -8,6 +9,7 @@
     </div>
   </div>
 
+  <!-- Seleccionar médico -->
   <mat-form-field appearance="outline" class="full-width">
     <mat-label>Seleccione médico</mat-label>
     <mat-select [(ngModel)]="selectedDoctor">
@@ -17,7 +19,10 @@
     </mat-select>
   </mat-form-field>
 
-  <!-- Agregar fecha y hora -->
+  <button mat-raised-button color="warn" class="delete-button" (click)="deleteDoctor()">
+    Eliminar Médico
+  </button>
+
   <div class="row">
     <mat-form-field appearance="outline" class="half-width">
       <mat-label>Agregar fecha</mat-label>
@@ -30,11 +35,12 @@
       <input matInput type="time" #addTime />
     </mat-form-field>
   </div>
-  <button mat-raised-button color="primary" (click)="addDate(addDatepicker.select, addTime.value)">Agregar</button>
+  <button mat-raised-button color="primary" (click)="addDate(addDatepicker.select, addTime.value)">
+    Agregar
+  </button>
 
-  <!-- Modificar fecha y hora -->
   <mat-form-field appearance="outline" class="full-width">
-    <mat-label>Modificar fecha</mat-label>
+    <mat-label>Fechas</mat-label>
     <mat-select [(ngModel)]="selectedDate">
       <mat-option *ngFor="let date of availableDates" [value]="date">
         {{ date.date }} ({{ date.time }})
@@ -42,17 +48,7 @@
     </mat-select>
   </mat-form-field>
 
-  <div class="row">
-    <mat-form-field appearance="outline" class="half-width">
-      <mat-label>Modificar fecha</mat-label>
-      <input matInput [matDatepicker]="modifyDatepicker" />
-      <mat-datepicker-toggle matSuffix [for]="modifyDatepicker"></mat-datepicker-toggle>
-      <mat-datepicker #modifyDatepicker></mat-datepicker>
-    </mat-form-field>
-    <mat-form-field appearance="outline" class="half-width">
-      <mat-label>Modificar hora</mat-label>
-      <input matInput type="time" #modifyTime />
-    </mat-form-field>
-  </div>
-  <button mat-raised-button color="primary" (click)="modifyDate(modifyDatepicker.select, modifyTime.value)">Modificar</button>
+  <button mat-raised-button color="warn" class="delete-button" (click)="deleteDate()">
+    Eliminar Fecha
+  </button>
 </div>

@@ -6,6 +6,7 @@ import { MatInputModule } from '@angular/material/input';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { CargarUsuarioService } from '../cargar-usuario.service';
 
 type EditableField = 'name' | 'email' | 'identification' | 'password';
 
@@ -25,6 +26,8 @@ type EditableField = 'name' | 'email' | 'identification' | 'password';
   styleUrls: ['./perfil.component.css'],
 })
 export class PerfilComponent implements OnInit {
+
+  constructor( private cargar: CargarUsuarioService) { }
   profile = {
     name: '',
     email: '',
@@ -39,18 +42,21 @@ export class PerfilComponent implements OnInit {
     password: false,
   };
 
-  isSubmitting: boolean = false; // Estado de envío
-  submissionError: boolean = false; // Estado de error en envío
+  isSubmitting: boolean = false; 
+  submissionError: boolean = false; 
 
   ngOnInit(): void {
-    // TODO: Reemplazar con la lógica del servicio para cargar los datos desde el backend
-    this.profile = {
-      name: 'Juan Pérez',
-      email: 'juan.perez@gmail.com',
-      identification: '123456789',
-      password: '********',
-    };
-    console.log('Datos cargados desde el backend:', this.profile);
+  this.cargar.getUsuario(localStorage.getItem('authToken')).subscribe(
+    response => {
+      this.profile.name = response.nombre;
+      this.profile.email = response.correo;
+      this.profile.identification = response.cedula;
+      this.profile.password = response.password;
+    },
+    error => {
+      console.log('Error al cargar los datos del usuario');
+    }
+  );
   }
 
   enableEdit(field: EditableField): void {

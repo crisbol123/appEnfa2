@@ -1,54 +1,53 @@
 <div class="admin-container">
   <h1 class="admin-title">ADMINISTRAR</h1>
 
-  <!-- Botones de especialidades -->
-  <div class="specialties-grid">
-    <div class="specialty-card" *ngFor="let specialty of specialties" (click)="loadDoctors(specialty.id)">
-      <img [src]="specialty.icon" alt="{{ specialty.name }}" class="specialty-icon" />
-      <p class="specialty-name">{{ specialty.name }}</p>
-    </div>
+<!-- Botones de especialidades -->
+<div class="specialties-grid">
+  <div class="specialty-card" *ngFor="let specialty of specialties" (click)="loadDoctors(specialty.id)">
+    <img [src]="specialty.icon" alt="{{ specialty.name }}" class="specialty-icon" />
+    <p class="specialty-name">{{ specialty.name }}</p>
   </div>
-
-  <!-- Seleccionar médico -->
-  <mat-form-field appearance="outline" class="full-width">
-    <mat-label>Seleccione médico</mat-label>
-    <mat-select [(ngModel)]="selectedDoctor">
-      <mat-option *ngFor="let doctor of doctors" [value]="doctor">
-        {{ doctor }}
-      </mat-option>
-    </mat-select>
-  </mat-form-field>
-
-  <button mat-raised-button color="warn" class="delete-button" (click)="deleteDoctor()">
-    Eliminar Médico
-  </button>
-
-  <div class="row">
-    <mat-form-field appearance="outline" class="half-width">
-      <mat-label>Agregar fecha</mat-label>
-      <input matInput [matDatepicker]="addDatepicker" />
-      <mat-datepicker-toggle matSuffix [for]="addDatepicker"></mat-datepicker-toggle>
-      <mat-datepicker #addDatepicker></mat-datepicker>
-    </mat-form-field>
-    <mat-form-field appearance="outline" class="half-width">
-      <mat-label>Agregar hora</mat-label>
-      <input matInput type="time" #addTime />
-    </mat-form-field>
-  </div>
-  <button mat-raised-button color="primary" (click)="addDate(addDatepicker.select, addTime.value)">
-    Agregar
-  </button>
-
-  <mat-form-field appearance="outline" class="full-width">
-    <mat-label>Fechas</mat-label>
-    <mat-select [(ngModel)]="selectedDate">
-      <mat-option *ngFor="let date of availableDates" [value]="date">
-        {{ date.date }} ({{ date.time }})
-      </mat-option>
-    </mat-select>
-  </mat-form-field>
-
-  <button mat-raised-button color="warn" class="delete-button" (click)="deleteDate()">
-    Eliminar Fecha
-  </button>
 </div>
+
+<!-- Seleccionar médico -->
+<mat-form-field appearance="outline" class="full-width">
+  <mat-label>Seleccione médico</mat-label>
+  <mat-select [(ngModel)]="selectedDoctor" (selectionChange)="onDoctorChange($event)">
+    <mat-option *ngFor="let doctor of doctors" [value]="doctor.id" >
+      {{ doctor.nombre }}
+    </mat-option>
+  </mat-select>
+</mat-form-field>
+
+<button mat-raised-button color="warn" class="delete-button" (click)="deleteDoctor()">
+  Eliminar Médico
+</button>
+
+<div class="row">
+  <mat-form-field appearance="outline" class="half-width">
+    <mat-label>Agregar fecha</mat-label>
+    <input matInput [matDatepicker]="addDatepicker" [(ngModel)]="newDate" />
+    <mat-datepicker-toggle matSuffix [for]="addDatepicker"></mat-datepicker-toggle>
+    <mat-datepicker #addDatepicker></mat-datepicker>
+  </mat-form-field>
+  <mat-form-field appearance="outline" class="half-width">
+    <mat-label>Agregar hora</mat-label>
+    <input matInput type="time" [(ngModel)]="newTime" />
+  </mat-form-field>
+</div>
+<button mat-raised-button color="primary" (click)="addDate()">
+  Agregar
+</button>
+
+<mat-form-field appearance="outline" class="full-width">
+  <mat-label>Fechas</mat-label>
+  <mat-select [(ngModel)]="selectedDate">
+    <mat-option *ngFor="let date of availableDates" [value]="date">
+      {{ date.fecha }} ({{ date.hora }})
+    </mat-option>
+  </mat-select>
+</mat-form-field>
+
+<button mat-raised-button color="warn" class="delete-button" (click)="deleteDate()">
+  Eliminar Fecha
+</button>

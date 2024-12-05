@@ -35,7 +35,7 @@ export class AgregarMedicoComponent implements OnInit {
   medicoForm!: FormGroup; // Formulario reactivo
   isSubmitting: boolean = false; // Indicador de envío en curso
   submissionError: boolean = false; // Indicador de error en el envío
-
+  submissionSuccess = false;
   constructor(private fb: FormBuilder, private router: Router,private medicoService: MedicoService) {}
 
   ngOnInit(): void {
@@ -53,7 +53,7 @@ export class AgregarMedicoComponent implements OnInit {
     if (this.medicoForm.valid) {
       this.isSubmitting = true; // Inicia el estado de carga
       this.submissionError = false; // Resetea cualquier error previo
-
+      this.submissionSuccess = false;
       // Objeto JSON para simular el envío
       const medicoData = {
         nombre: this.medicoForm.value.nombre,
@@ -66,6 +66,7 @@ export class AgregarMedicoComponent implements OnInit {
    
       (response) => {
         this.isSubmitting = false; 
+        this.submissionSuccess = true; 
       },
    
       (error) => {

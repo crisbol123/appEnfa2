@@ -6,6 +6,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatCardModule } from '@angular/material/card';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
+import { AuthService } from '../auth.service';
 
 @Component({
   selector: 'app-login',
@@ -25,7 +26,7 @@ export class LoginComponent implements OnInit {
   loginError: boolean = false;
   formSubmitted: boolean = false;
 
-  constructor(private fb: FormBuilder, private router: Router) { }
+  constructor(private fb: FormBuilder, private router: Router, private authService: AuthService) { }
 
   ngOnInit(): void {
     this.loginForm = this.fb.group({
@@ -35,7 +36,23 @@ export class LoginComponent implements OnInit {
   }
 
   onSubmit(): void {
-
+    this.formSubmitted = true;
+ 
+    if (this.loginForm.valid) {
+      const { cedula, contrasena } = this.loginForm.value;
+      this.authService.login(cedula, contrasena).subscribe(
+        response => {
+          const token = response.token;
+          localStorage.setItem('authToken', token); 
+          this.router.navigate(['main-menu']);
+          console.log('Login successful with token: ' + token);
+         
+        },
+        error => {
+          this.loginError = true; 
+        }
+      );
+    }
   }
 
   hasErrors(controlName: string, errorName: string): boolean {

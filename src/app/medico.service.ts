@@ -11,8 +11,8 @@ export class MedicoService {
   constructor(private http: HttpClient) {}
 
 
-  getMedicos(): Observable<any> {
-    return this.http.get<any>(`${this.apiUrl}/listar`);
+  getMedicos(specialtyId:number): Observable<any> {
+    return this.http.get<any>(`${this.apiUrl}/listar?especialidad=${specialtyId}`);
   }
 
   createMedico(medico: any): Observable<any> {

@@ -9,7 +9,7 @@ Esta es una aplicación web diseñada exclusivamente para administradores, que p
 ## Funcionalidades
 
 ### 1. **Inicio de Sesión**
-- **Descripción**: Los administradores deben iniciar sesión utilizando su número de cédula y contraseña.
+- **Descripción**: Lo administradores deben iniciar sesión utilizando su número de cédula y contraseña.
 - **Restricciones**: Solo los usuarios con credenciales válidas tienen acceso.
 
 ---

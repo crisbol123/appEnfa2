@@ -3,7 +3,7 @@
 
 <!-- Botones de especialidades -->
 <div class="specialties-grid">
-  <div class="specialty-card" *ngFor="let specialty of specialties" (click)="loadDoctors(specialty.id)">
+  <div class="specialty-card" *ngFor="let specialty of specialties" [class.selected]="selectedSpecialty === specialty.id" (click)="selectSpecialty(specialty.id)">
     <img [src]="specialty.icon" alt="{{ specialty.name }}" class="specialty-icon" />
     <p class="specialty-name">{{ specialty.name }}</p>
   </div>

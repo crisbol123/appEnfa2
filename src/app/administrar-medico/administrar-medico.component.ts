@@ -131,4 +131,11 @@ this.medicoService.deleteMedico(this.selectedDoctor).subscribe(
       );
     }
   }
+
+  selectedSpecialty: number | null = null;
+
+  selectSpecialty(specialtyId: number): void {
+    this.selectedSpecialty = specialtyId;
+    this.loadDoctors(specialtyId);
+  }
 }

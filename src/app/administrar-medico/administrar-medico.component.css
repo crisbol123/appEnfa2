@@ -27,6 +27,7 @@
   grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
   gap: 16px;
   width: 100%;
+  margin-bottom: 5px;
 }
 
 .specialty-card {
@@ -95,4 +96,9 @@
 
 .half-width {
   flex: 1;
+}
+
+.specialty-card.selected {
+  background-color: rgb(230, 230, 230);
+  transform: scale(0.95);
 }
